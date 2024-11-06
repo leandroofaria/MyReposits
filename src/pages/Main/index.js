@@ -9,13 +9,28 @@ export default function Main() {
     const [newRepo, setNewRepo] = useState('');
     const [repositorios, setRepositorios] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState(null)
 
     const handleSubmit = useCallback((event) => {
         event.preventDefault();
         async function submit() {
             setLoading(true);
+            setAlert(null)
             try {
+
+                if (newRepo === ''){
+                    throw new Error('Você precisa indicar um repositório')
+                    
+                }
+
                 const response = await api.get(`repos/${newRepo}`);
+
+                const hasRepo = repositorios.find(repo => repo.name === newRepo)
+
+                if (hasRepo) {
+                    throw new Error('Esse repositorio ja foi adicionado')
+                }
+            
                 const data = {
                     name: response.data.full_name,
                 };
@@ -23,6 +38,7 @@ export default function Main() {
                 setRepositorios([...repositorios, data]);
                 setNewRepo('');
             } catch (error) {
+                setAlert(true);
                 console.log(error);
             } finally {
                 setLoading(false);
@@ -33,6 +49,7 @@ export default function Main() {
 
     function handleinputChange(event) {
         setNewRepo(event.target.value);
+        setAlert(null)
     }
 
     const handleDelete = useCallback((repo) => {
@@ -47,7 +64,7 @@ export default function Main() {
                 <h1>Meus Repositorios</h1>
             </Header>
 
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} error={alert}>
                 <input type="text" placeholder="Adicionar Repositorios" value={newRepo} onChange={handleinputChange} />
 
                 <SubmitButton loading={loading ? 1 : 0}>
