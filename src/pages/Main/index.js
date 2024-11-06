@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { FaGithub, FaPlus, FaSpinner, FaBars, FaTrash } from 'react-icons/fa';
 import { Container, Header, Form, SubmitButton, List, DeleteButton } from './styles';
+import { Link } from "react-router-dom";
 
 import api from '../../services/api';
 
@@ -94,13 +95,15 @@ export default function Main() {
             <List>
                 {repositorios.map(repo => (
                     <li key={repo.name}>
+
                         <span>
                             <DeleteButton onClick={() => handleDelete(repo.name)}>
                                 <FaTrash size={15}/>
                             </DeleteButton>
                             {repo.name}
                         </span>
-                        <a href=""> <FaBars size={20}/> </a>
+
+                        <Link to={`/repositorio/${encodeURIComponent(repo.name)}`}> <FaBars size={20}/> </Link>
                     </li>
                 ))}
             </List>
