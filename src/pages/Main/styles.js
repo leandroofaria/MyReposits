@@ -15,7 +15,7 @@ export const Header = styled.div`
     margin-bottom: 20px;
 
     h1 {
-        font-size: 19px;
+        font-size: 16px;
         margin-left: 10px;
     }
 `;
@@ -33,7 +33,9 @@ export const Form = styled.form`
     }
 `;
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button.attrs({
+    type: 'submit'
+})`
     display: flex;
     align-items: center;
     justify-content: center;
