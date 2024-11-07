@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
-import { Container } from './styles';
+import { Container,Owner,Loading, BackButton } from './styles';
 import api from "../../services/api";
+import { FaArrowLeft } from 'react-icons/fa';
 
 export default function Repositorio() {
-    const { paginaRepositorio } = useParams();  
+    const { repositorio } = useParams();  
 
-    const [repositorio, setRepositorio] = useState({})
+    const [esseRepositorio, setEsseRepositorio] = useState({})
     const [issues, setIssues] = useState([])
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function load() {
-            const nomeRepo = decodeURIComponent(paginaRepositorio);
+            const nomeRepo = decodeURIComponent(repositorio);
             
             const [repositorioData, issuesData] = await Promise.all([
                 api.get(`/repos/${nomeRepo}`),
@@ -26,16 +27,39 @@ export default function Repositorio() {
             
             
 
-            setRepositorio(repositorioData.data)
+            setEsseRepositorio(repositorioData.data)
             setIssues(issuesData.data)
             setLoading(false)
         }
 
         load();
-    }, [paginaRepositorio]); 
+    }, [repositorio]); 
+
+    if(loading) {
+        return (
+            <Loading>
+                <h1>Carregando</h1>
+            </Loading>
+        )
+    }
+
     return (
         <Container>
-            
+
+            <BackButton to="/">
+                <FaArrowLeft color="#8EA4D2" size={30}/>
+            </BackButton>
+
+            <Owner>
+                {esseRepositorio.owner && (
+                    <img src={esseRepositorio.owner.avatar_url} alt={esseRepositorio.owner.login}/>
+                )}
+                
+                <h1>{esseRepositorio.name}</h1>
+                
+                <p>{esseRepositorio.description}</p>
+            </Owner>
         </Container>
+
     );
 };
