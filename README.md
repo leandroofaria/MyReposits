@@ -1,4 +1,4 @@
-# 📂 **Meus Repositórios**
+# 📂 **MyReposits**
 
 Um aplicativo React que permite ao usuário adicionar repositórios do GitHub à sua lista, exibir detalhes sobre eles e visualizar issues relacionadas. Este projeto utiliza a API do GitHub para buscar e gerenciar repositórios e issues.
 
