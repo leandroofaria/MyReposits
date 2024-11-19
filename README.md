@@ -15,19 +15,19 @@ Um aplicativo React que permite ao usuário adicionar repositórios do GitHub à
 ---
 
 ## 📦 **Instalação**
-# Clone este repositório
+Clone este repositório
 git clone https://github.com/seu-usuario/seu-repositorio.git
 
-# Acesse o diretório do projeto
+Acesse o diretório do projeto
 cd seu-repositorio
 
-# Instale as dependências
+Instale as dependências
 npm install
 
-# Crie um arquivo .env na raiz do projeto e adicione o token do GitHub
+Crie um arquivo .env na raiz do projeto e adicione o token do GitHub
 echo "REACT_APP_GITHUB_TOKEN=seu_token_aqui" > .env
 
-# Inicie o projeto
+Inicie o projeto
 npm start
 
 ---
