@@ -129,9 +129,25 @@ export const PageActions = styled.div`
     }
 `
 
-// export const IssuesList = styled.div`
+export const FilterList = styled.div`
+    margin: 15px 0;
 
-// `
+    button {
+        outline: 0;
+        border: 0;
+        padding: 5px 6px;
+        border-radius: 4px;
+        margin: 0px 3px;
+        opacity: 0.3;
+        transition: 0.3s;
+
+        &:nth-child(${props => props.active + 1}) {
+            background: #8EA4D2;
+            color: white;
+            opacity: 100%;
+        }
+    }
+`;
 
 // export const IssuesList = styled.div`
 
