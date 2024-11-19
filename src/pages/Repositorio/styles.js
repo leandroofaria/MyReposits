@@ -56,8 +56,6 @@ export const BackButton = styled(Link)`
 `;
 
 export const IssuesList = styled.ul`
-    margin-top: 30px;
-    padding-top: 30px;
     list-style: none;
 
     li {
@@ -131,6 +129,7 @@ export const PageActions = styled.div`
 
 export const FilterList = styled.div`
     margin: 15px 0;
+    padding-top: 15px;
 
     button {
         outline: 0;
@@ -148,7 +147,3 @@ export const FilterList = styled.div`
         }
     }
 `;
-
-// export const IssuesList = styled.div`
-
-// `
