@@ -14,6 +14,7 @@ Um aplicativo React que permite ao usuário adicionar repositórios do GitHub à
 
 ---
 
+## 📦 **Instalação**
 ```bash
 # Clone este repositório
 git clone https://github.com/seu-usuario/seu-repositorio.git
